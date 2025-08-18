@@ -1,12 +1,11 @@
-# React + Vite
+E-Commerce Website
+A modern e-commerce web app built with ReactJS for the frontend and Node.js/Express for the backend. Users can register, log in, view products, and manage their cart.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+User Authentication: Login and registration pages.
 
-Currently, two official plugins are available:
+Product Management: View list of products, add products with images (admin), display details.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Cart Functionality: Add products to cart, view cart contents.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Backend Integration: Uses Axios to communicate with a RESTful API (localhost:3000).
