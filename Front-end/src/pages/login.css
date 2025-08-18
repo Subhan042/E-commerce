@@ -1,0 +1,67 @@
+#outer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+#container{
+    background-color:  #fff;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px #fff;
+    padding: 20px;
+    
+}
+
+#container h2{
+    text-align: left;
+    font-size: 22px;
+    font-weight: 600;
+    position: relative;
+}
+
+#container h2::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #4070f4;
+    height: 3px;
+    width: 28px;
+    border-radius: 20px;
+}
+
+#container input{
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.fade-message {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    animation: fadeOut 3s forwards;
+}
+
+.fade-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.fade-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.error{
+    color: red;
+   
+}
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
