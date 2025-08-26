@@ -4,9 +4,11 @@ import connectDb from './db.js'
 import authroutes from './routes/auth.js'
 import products from './routes/products.js'
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
+dotenv.config()
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 const app = express();
 connectDb();
 
