@@ -95,7 +95,7 @@ function login() {
 
         try {
             console.log("the server has been intiiated")
-            const response = await axios.post(`http://localhost:3000${endpoint}`,payload);
+            const response = await axios.post(`https://e-commerce-wtdr.onrender.com${endpoint}`,payload);
 
             if(response.status === 201 || response.status === 200){
                 if(mode === 'register'){

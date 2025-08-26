@@ -17,7 +17,7 @@
     const dispatch = useDispatch();
     
     useEffect(()=>{
-      axios.get('http://localhost:3000/api/products')
+      axios.get('https://e-commerce-wtdr.onrender.com/api/products')
       .then(res => setProducts(res.data))
       .catch(err=>{console.error(`error fetching products:${err}`)})
       
@@ -35,7 +35,7 @@
       formdata.append('price',newProduct.price)
       formdata.append('photo',newProduct.productphoto)
       try{
-      const res = await axios.post('http://localhost:3000/api/products',formdata)
+      const res = await axios.post('https://e-commerce-wtdr.onrender.com/api/products',formdata)
       setProducts(prev => [res.data,...prev]);
       setNewProduct({name:'',price:'',productphoto:null});
       setShowform(false);
