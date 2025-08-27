@@ -4,20 +4,27 @@ import multer from 'multer'
 import path from 'path'
 import fs from 'fs'
 import {v4 as uuid} from 'uuid'
+import {v2 as cloudinary} from 'cloudinary'
+import dotenv from 'dotenv'
 
 const router = express.Router();
-
-if(!fs.existsSync('uploads')){
-    fs.mkdirSync('uploads');
-}
-
-
-const storage = multer.diskStorage({
-    destination:'uploads',
-    filename:(req,file,cb)=> cb(null,Date.now()+'-'+file.originalname)
+dotenv.config();
+// if(!fs.existsSync('uploads')){
+//     fs.mkdirSync('uploads');
+// }
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET,
 });
 
-const upload = multer({storage})
+
+// const storage = multer.diskStorage({
+//     destination:'uploads',
+//     filename:(req,file,cb)=> cb(null,Date.now()+'-'+file.originalname)
+// });
+
+const upload = multer({dest:"uploads/"})
 
 router.delete('/', async (req, res) => {
   try {
@@ -53,12 +60,18 @@ router.post('/',upload.single('photo'),async (req,res)=>{
         if(!name || !price || !req.file){
             return res.status(400).json({message:'All fields are required'});
         }
-        const photoUrl = `http://localhost:3000/uploads/${req.file.filename}`
+        // const photoUrl = `http://localhost:3000/uploads/${req.file.filename}`
+        const result = await cloudinary.uploader.upload(req.file.path, {
+        folder: "products"
+        });
+
+
+        fs.unlinkSync(req.file.path);
         const newproducts = new Product({
             id:uuid(),
             name,
             price: parseFloat(price),
-            photoUrl
+            photoUrl: result.secure_url
         });
         await newproducts.save();
         res.json(newproducts);
